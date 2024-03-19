@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+</head>
+<body>
+    <center>
+    <h1>Welcome, {{ username }}!</h1>
+    <div class="container-data">
+        <form action="/" method="post">
+            <input type="text" class="text-box" name="city" placeholder="Enter a City. Example: London" required>
+            <button type="submit" class="btn">CHECK</button>
+        </form>
+    </div>
+    <br>
+    {% if city_name %}
+    <div class="show-result">
+        <div class="output"><h3>{{ city_name }}</h3></div>
+        <div class="output"><h3>Weather: {{ condition }}</h3></div>
+        <div class="output-desc">{{ desc }}</div>
+        <div class="output"><h3>Temperature: {{ temperature }} °C</h3></div>
+        <div class="output"><h3>Humidity: {{ humidity }} %</h3></div>
+        <div class="output"><h3>Pressure: {{ pressure }} mb</h3></div>
+        <div class="output"><h3>Wind Speed: {{ wind }} Km/h</h3></div>
+    </div>
+    {% endif %}
+    <form action="/export_to_excel" method="GET">
+        <button type="submit">Export Data to Excel</button>
+    </form>
+    <p><a href="{{ url_for('logout') }}">Logout</a></p>
+    </center>
+</body>
+</html>
